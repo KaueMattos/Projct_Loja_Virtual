@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flower Harbor</title>
+    <title>PanBlack</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -17,35 +17,22 @@
 </head>
 <body>
 <?php 
-include 'nav.php'
+include 'nav.php';
+include 'cabecario.html';
+
+include 'conexao.php';
+
+$consulta = $cn->query('select * from vw_camisetas');
 ?>
-<?php 
-include 'cabecario.html'?>
 <div class="container-fluid">
     <div class="row">
+    <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="col-sm-3">
-        <img src="https://placehold.it/450x320" class="img-responsive" style="width:100%;" alt="">
-        <div><h1>Nome do Produto</h1></div>
-        <div><h4>Nome do R$158,00</h4></div>
-        </div>
-
-        <div class="col-sm-3">
-        <img src="https://placehold.it/450x320" class="img-responsive" style="width:100%;" alt="">
-        <div><h1>Nome do Produto</h1></div>
-        <div><h4>Nome do R$158,00</h4></div>
-        </div>
-
-        <div class="col-sm-3">
-        <img src="https://placehold.it/450x320" class="img-responsive" style="width:100%;" alt="">
-        <div><h1>Nome do Produto</h1></div>
-        <div><h4>Nome do R$158,00</h4></div>
-        </div>
-
-        <div class="col-sm-3">
-        <img src="https://placehold.it/450x320" class="img-responsive" style="width:100%;" alt="">
-        <div><h1>Nome do Produto</h1></div>
-        <div><h4>Nome do R$158,00</h4></div>
-        </div>
+        <img src="imagens/<?php echo $exibe['ds_img']; ?>.jpg" class="img-responsive" style="width:100%;" alt="">
+        <div><h4><b><?php echo mb_strimwidth($exibe['nm_camiseta'], 0,30,'...'); ?></b></h4></div>
+        <div><h5>R$ <?php echo number_format($exibe['vl_preco'], 2,',','.'); ?></h5></div>
+        </div>        
+    <?php } ?>  
     </div>
 </div>
 <?php include 'rodape.html';?>
