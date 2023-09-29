@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark" style="background-color: black;">
+<nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -13,16 +13,16 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Lançamentos</a></li>
+        <li><a href="index.php">Home<span class="sr-only">(current)</span></a></li>
+        <li><a href="lanc.php">Lançamentos</a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categorias <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Design</a></li>
-            <li><a href="#">Infraestrutura</a></li>
-            <li><a href="#">Dados</a></li>
-            <li><a href="#">Front end</a></li>
-            <li><a href="#">Mobile</a></li>
+            <li><a href="marcas.php?marc=Kace">Kace</a></li>
+            <li><a href="marcas.php?marc=Thunder God Co">Thunder God Co</a></li>
+            <li><a href="marcas.php?marc=Ciena">Ciena</a></li>
+            <li><a href="marcas.php?marc=Nephew">Nephew</a></li>
+            <li><a href="marcas.php?marc=Adidas">Adidas</a></li>
           </ul>
         </li>
       </ul>
