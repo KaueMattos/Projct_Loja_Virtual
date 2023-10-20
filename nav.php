@@ -30,11 +30,33 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Pesquisar">
         </div>
-        <button type="submit" class="btn btn-default">Pesquisar</button>
+        <button type="submit" class="btn btn-default">Pesquisa</button>
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">Contato</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"> Logon</a></span></li>
+        <?php if(empty($_SESSION['ID'])) {?>
+        <li><a href="formlogon.php"><span class="glyphicon glyphicon-log-in"> Logon</a></span></li>
+        <?php } else{
+
+          if($_SESSION['Status'] == 0){
+            $consulta_usuario = $cn->query("select nomeUsu from tb_Usuario
+            where idUsua = '$_SESSION[ID]'");
+            $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);
+
+          ?>
+
+   <li><a href="#"><span class="glyphicon glyphicon-user"><?php echo $exibe_usuario['nomeUsu']; ?></a></span></li>
+   <li><a href="sair.php"><span class="glyphicon glyphicon-log-out">Exit</a></span></li>
+
+   <?php } else{
+           $consulta_usuario = $cn->query("select nomeUsu from tb_Usuario
+           where idUsua = '$_SESSION[ID]'");
+           $exibe_usuario = $consulta_usuario->fetch(PDO::FETCH_ASSOC);?>
+             <li><a href="adm.php"><button class="btn btn-sm btn-danger">Administrador</button></a></li>
+             <li><a href="sair.php"><span class="glyphicon glyphicon-log-out">Exit</a></span></li>
+
+   <?php } }?>
+ 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

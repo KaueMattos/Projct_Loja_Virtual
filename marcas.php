@@ -17,12 +17,13 @@
 </head>
 <body>
 <?php 
+include 'conexao.php';
 include 'nav.php';
 include 'cabecario.html';
 
 $marc = $_GET['marc'];
 
-include 'conexao.php';
+
 
 $consulta = $cn->query("select nm_camiseta ,vl_preco,ds_img,qt_estoque from vw_camisetas where nm_marca = '$marc';");
 ?>
@@ -31,7 +32,7 @@ $consulta = $cn->query("select nm_camiseta ,vl_preco,ds_img,qt_estoque from vw_c
     <?php while($exibe = $consulta->fetch(PDO::FETCH_ASSOC)) { ?>
         <div class="col-sm-3">
         <img src="imagens/<?php echo $exibe['ds_img']; ?>.jpg" class="img-responsive" style="width:100%;" alt="">
-        <div><h4><b><?php echo mb_strimwidth($exibe['nm_camiseta'], 0,30,'...'); ?></b></h4></div>
+        <div><h4><b><?php echo mb_strimwidth($exibe['nm_camiseta'], 0,25,'...'); ?></b></h4></div>
         <div><h5>R$ <?php echo number_format($exibe['vl_preco'], 2,',','.'); ?></h5></div>
 
         <div class="text-center" style="margin-top: 5px; margin-bottom:5px;">

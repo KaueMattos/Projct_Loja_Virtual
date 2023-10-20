@@ -17,10 +17,11 @@
 </head>
 <body>
 <?php 
+include 'conexao.php';
 include 'nav.php';
 include 'cabecario.html';
 
-include 'conexao.php';
+
 
 $consulta = $cn->query('select nm_camiseta ,vl_preco,ds_img,qt_estoque from vw_camisetas where sg_lancamento = "S"');
 ?>
